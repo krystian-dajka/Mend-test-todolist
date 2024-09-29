@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mend-test-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: krystian
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db_data:/data/db  # Specify the volume for MongoDB data
+
+  app:
+    build: .
+    container_name: mend-test-todolist
+    restart: always
+    env_file: .env
+    network_mode: host
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    depends_on:
+      - mongodb
