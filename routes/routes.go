@@ -14,16 +14,16 @@ func SetupRouter(router *gin.Engine, client *mongo.Client) {
 	// routes for todo CRUD
 	todos := router.Group("/api/v1/todos")
 	{
-		todos.GET("", middleware.ProtectedRoute(), func(c *gin.Context) {
+		todos.GET("", func(c *gin.Context) {
 			todo.GetAllTodos(c, client)
 		})
-		todos.POST("", middleware.ProtectedRoute(), func(c *gin.Context) {
+		todos.POST("", func(c *gin.Context) {
 			todo.CreateTodo(c, client)
 		})
-		todos.DELETE("/:id", middleware.ProtectedRoute(), func(c *gin.Context) {
+		todos.DELETE("/:id", func(c *gin.Context) {
 			todo.DeleteTodo(c, client)
 		})
-		todos.PUT("/:id", middleware.ProtectedRoute(), func(c *gin.Context) {
+		todos.PUT("/:id", func(c *gin.Context) {
 			todo.UpdateTodo(c, client)
 		})
 	}

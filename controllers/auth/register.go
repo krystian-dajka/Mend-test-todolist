@@ -6,13 +6,11 @@ import (
 	"os"
 
 	"github.com/krystian-dajka/Mend-test-todolist/util"
-
-	"go.mongodb.org/mongo-driver/bson/primitive"
-
 	"github.com/krystian-dajka/Mend-test-todolist/models"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -21,7 +19,6 @@ import (
 // @route POST /api/v1/auth/register
 // @access Public
 func Register(c *gin.Context, client *mongo.Client) {
-
 	user := models.UserCred{}
 
 	bindErr := c.ShouldBindJSON(&user)
