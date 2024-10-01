@@ -19,7 +19,6 @@ func CreateTodo(c *gin.Context, client *mongo.Client) {
 	newTodo := models.NewTodo{}
 	newTodo.SetCreatedAt()
 	newTodo.SetUpdatedAt()
-	newTodo.User = c.Keys["id"].(string)
 
 	bindErr := c.ShouldBindJSON(&newTodo)
 	if bindErr != nil {

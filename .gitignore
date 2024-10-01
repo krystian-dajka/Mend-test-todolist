@@ -1,3 +1,5 @@
 .env
 gin-bin
 main
+
+/db_data
