@@ -23,7 +23,7 @@ func GetAllTodos(c *gin.Context, client *mongo.Client) {
 
 	// query db and filter by user id
 	cursor, findErr := todosCollection.Find(c.Request.Context(), bson.M{
-		"user": c.Keys["id"],
+		"user": "",
 	})
 	if findErr != nil {
 		c.JSON(500, util.ResError{
